@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.section {
+  @apply border-2 border-slate-300 bg-white rounded-md p-4 w-full;
+}
