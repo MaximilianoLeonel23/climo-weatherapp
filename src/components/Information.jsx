@@ -5,20 +5,18 @@ const Information = () => {
     return new Date();
   };
   setInterval(getNow, 1000);
-  
+
   const data = getToday(getNow());
 
   return (
-    <section className="section">
-      <h2 className="font-bold">{fullYear.weekDays[data.day]}</h2>
-      <p id="hour">
+    <section className="flex flex-col gap-y-1 text-slate-800">
+      <h2 className="font-semibold text-xl">{fullYear.weekDays[data.day]}</h2>
+      <p className="font-medium text-4xl">
         {String(data.hour).padStart(2, "0")} :{" "}
         {String(data.minutes).padStart(2, "0")}
       </p>
-      <div className="flex gap-x-2">
-        <p>{`${data.date} de ${fullYear.months[data.month]}`}</p>
-        <span>|</span>
-        <p>Argentina, Rosario</p>
+      <div>
+        <p>{`${data.date} de ${fullYear.months[data.month]}, ${data.year}`}</p>
       </div>
     </section>
   );

@@ -7,5 +7,5 @@ body {
 }
 
 .section {
-  @apply border-2 border-slate-300 bg-white rounded-md p-4 w-full;
+  @apply border border-slate-300 bg-white rounded-2xl p-4 w-full;
 }

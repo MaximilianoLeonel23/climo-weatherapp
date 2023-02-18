@@ -1,35 +1,33 @@
 import { getToday, fullYear } from "../helpers/getTime";
 
 const Forecast = ({ day }) => {
-  // .toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
-  //const dayformat = (day?.Date).split("T")[0];
-  const dateFormat = getToday(new Date(day?.Date))
-  console.log(dateFormat)
-  
+  const dateFormat = getToday(new Date(day?.Date));
+
   return (
-    <section className="section">
-      <article>
+    <section className="section text-slate-800 h-72">
+      <article className="min-w-40">
         <div>
-          <h4>{fullYear.weekDays[dateFormat.day]}</h4>
+          <h4 className="font-bold text-lg">
+            {fullYear.weekDays[dateFormat.day]}
+          </h4>
           <p>{`${dateFormat.date} de ${fullYear.months[dateFormat.month]}`}</p>
         </div>
-        <div>
+        <div className="flex flex-col items-center text-center py-4 border-b border-slate-300">
           <img
             src={`https://developer.accuweather.com/sites/default/files/${String(
               day?.Day.Icon
             ).padStart(2, "0")}-s.png`}
             alt="weathericon"
           />
-          <p>{day?.Day.IconPhrase}</p>
-
+          <p className="font-medium">{day?.Day.IconPhrase}</p>
         </div>
-        <div>
-          <div>
-            <p>Mínima</p>
+        <div className="flex justify-between pt-2">
+          <div className="flex flex-col items-center">
+            <p className="font-medium">Mínima</p>
             <span>{day?.Temperature.Minimum.Value} Cº</span>
           </div>
-          <div>
-            <p>Máxima</p>
+          <div className="flex flex-col items-center">
+            <p className="font-medium">Máxima</p>
             <span>{day?.Temperature.Maximum.Value} Cº</span>
           </div>
         </div>

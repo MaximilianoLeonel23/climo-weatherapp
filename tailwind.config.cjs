@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     container: {
       padding: {
-        DEFAULT: "1rem",
-        sm: "1rem",
+        DEFAULT: "0.75rem",
+        sm: "0.75rem",
         lg: "2rem",
       },
       
@@ -16,6 +16,9 @@ module.exports = {
         "primary-pink": "#EE4266",
         "primary-blue": "#170B60",
       },
+      minWidth: {
+        "40": "10rem"
+      }
     },
   },
   plugins: [],
