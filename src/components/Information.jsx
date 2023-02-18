@@ -16,7 +16,7 @@ const Information = () => {
         {String(data.minutes).padStart(2, "0")}
       </p>
       <div className="flex gap-x-2">
-        <p>{`${data.day} de ${fullYear.months[data.month]}`}</p>
+        <p>{`${data.date} de ${fullYear.months[data.month]}`}</p>
         <span>|</span>
         <p>Argentina, Rosario</p>
       </div>
