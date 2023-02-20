@@ -5,14 +5,15 @@ const Information = () => {
     return new Date();
   };
 
+  
   const data = getToday(getNow());
 
   return (
     <section className="flex flex-col gap-y-1 text-slate-800">
       <h2 className="font-semibold text-xl">{fullYear.weekDays[data.day]}</h2>
       <p className="font-medium text-4xl">
-        {String(data.hour).padStart(2, "0")} :{" "}
-        {String(data.minutes).padStart(2, "0")}
+        {String(data?.hour).padStart(2, "0")} :{" "}
+        {String(data?.minutes).padStart(2, "0")}
       </p>
       <div>
         <p>{`${data.date} de ${fullYear.months[data.month]}, ${data.year}`}</p>

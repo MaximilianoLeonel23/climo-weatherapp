@@ -5,20 +5,22 @@ import { fullYear } from "./helpers/getTime";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Logo from "./components/Logo";
-
+import { API_CURR, API_DAILY } from "./constants/env";
 
 function App() {
-  const key = "WQpHvCLUpweCdgmUx2X2MyxvwypVAp80";
   const locationKey = "11222";
   const [weather, setWeather] = useState();
   const [daily, setDaily] = useState([]);
   const [minmax, setMinmax] = useState([]);
 
-  // const [weather] = getCurrent("currentconditions", ["&language=es-ar", "&details=true"])
+  const key = "WQpHvCLUpweCdgmUx2X2MyxvwypVAp80";
+
+  // Obtener condiciones de hoy
+
   useEffect(() => {
     axios
       .get(
-        `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${key}&language=es-ar&details=true`
+        `${API_CURR}/${locationKey}?apikey=${key}&language=es-ar&details=true`
       )
       .then((resp) => {
         setWeather(resp.data[0]);
@@ -26,10 +28,12 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  // Obtener condiciones de los próximos 5 días
+
   useEffect(() => {
     axios
       .get(
-        `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${key}&language=es-ar&metric=true`
+        `${API_DAILY}/${locationKey}?apikey=${key}&language=es-ar&metric=true`
       )
       .then((resp) => {
         setDaily(resp.data.DailyForecasts.slice(1));
@@ -39,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container flex flex-col mx-auto bg-slate-100">
+    <div className="container flex flex-col mx-auto pt-4 bg-slate-100">
       <header className="py-4">
         <div className="flex justify-between items-end text-slate-800">
           <Logo />
@@ -53,6 +57,7 @@ function App() {
             {/* Información del dia*/}
             <Information fullYear={fullYear} />
           </div>
+
           <div className="flex flex-col items-center w-full">
             {/* Temperatura actual */}
             <Today weather={weather} minmax={minmax} />
