@@ -22,6 +22,7 @@ function App() {
       .get(
         `${API_CURR}/${locationKey}?apikey=${key}&language=es-ar&details=true`,
         {
+          mode: "no-cors",
           headers: { "Access-Control-Allow-Origin": "*" },
         }
       )
@@ -38,6 +39,7 @@ function App() {
       .get(
         `${API_DAILY}/${locationKey}?apikey=${key}&language=es-ar&metric=true`,
         {
+          mode: "no-cors",
           headers: { "Access-Control-Allow-Origin": "*" },
         }
       )
