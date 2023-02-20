@@ -5,7 +5,7 @@ const Forecast = ({ day }) => {
 
   return (
     <section className="section text-slate-800 h-72">
-      <article className="min-w-40">
+      <article className="min-w-40 lg:w-full">
         <div>
           <h4 className="font-bold text-lg">
             {fullYear.weekDays[dateFormat.day]}

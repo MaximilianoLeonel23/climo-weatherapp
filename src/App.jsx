@@ -6,6 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Logo from "./components/Logo";
 
+
 function App() {
   const key = "WQpHvCLUpweCdgmUx2X2MyxvwypVAp80";
   const locationKey = "11222";
@@ -13,7 +14,7 @@ function App() {
   const [daily, setDaily] = useState([]);
   const [minmax, setMinmax] = useState([]);
 
-
+  // const [weather] = getCurrent("currentconditions", ["&language=es-ar", "&details=true"])
   useEffect(() => {
     axios
       .get(
@@ -37,7 +38,6 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
-  
   return (
     <div className="container flex flex-col mx-auto bg-slate-100">
       <header className="py-4">
@@ -46,23 +46,25 @@ function App() {
           <h4>Rosario, Argentina</h4>
         </div>
       </header>
-      <div className="flex flex-col lg:flex-row items-center py-6 gap-y-4">
+      <div className="flex flex-col lg:flex-row lg:justify-between py-6 gap-y-4">
         {/* Sección izquirda (desktop) o sup (mobile) */}
-        <div className="flex flex-col items-left w-full lg:w-1/2">
-          {/* Información del dia*/}
-          <Information fullYear={fullYear} />
-        </div>
-        <div className="flex flex-col items-center w-full lg:w-1/2">
-          {/* Temperatura actual */}
-          <Today weather={weather} minmax={minmax}/>
+        <div>
+          <div className="flex flex-col items-left w-full pb-4">
+            {/* Información del dia*/}
+            <Information fullYear={fullYear} />
+          </div>
+          <div className="flex flex-col items-center w-full">
+            {/* Temperatura actual */}
+            <Today weather={weather} minmax={minmax} />
+          </div>
         </div>
         {/* Sección derecha (desktop) o inf (mobile) */}
-        <div className="flex lg:flex-col gap-x-2 w-full overflow-scroll lg:w-1/2">
+        <div className="flex gap-x-2 w-full overflow-scroll lg:overflow-auto lg:w-auto lg:pl-12">
           {/* Forecast 7 días */}
           {daily.map((day, i) => {
             return (
-              <div className="">
-                <Forecast key={i} day={day} />
+              <div key={i}>
+                <Forecast day={day} />
               </div>
             );
           })}

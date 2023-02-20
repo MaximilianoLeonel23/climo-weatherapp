@@ -1,9 +1,8 @@
 const Today = ({ weather, minmax }) => {
+  const minMax = minmax[0]?.Temperature;
 
-
-  const minMax = minmax[0]?.Temperature
   return (
-    <section className="section text-slate-800">
+    <section className="section text-slate-800 lg:w-101">
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-3xl font-semibold">
@@ -21,8 +20,12 @@ const Today = ({ weather, minmax }) => {
         </div>
       </div>
       <div className="flex gap-x-4 py-2 border-b border-slate-300">
-        <h3 className="font-medium text-lg">Mínima: {minMax?.Minimum.Value} Cº</h3>
-        <h3 className="font-medium text-lg">Máxima: {minMax?.Maximum.Value} Cº</h3>
+        <h3 className="font-medium text-lg">
+          Mínima: {minMax?.Minimum.Value} Cº
+        </h3>
+        <h3 className="font-medium text-lg">
+          Máxima: {minMax?.Maximum.Value} Cº
+        </h3>
       </div>
       {/* Detalles del clima */}
       <div className="pt-4">

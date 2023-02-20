@@ -4,7 +4,6 @@ const Information = () => {
   const getNow = () => {
     return new Date();
   };
-  setInterval(getNow, 1000);
 
   const data = getToday(getNow());
 

@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     container: {
       padding: {
-        DEFAULT: "0.75rem",
-        sm: "0.75rem",
-        lg: "2rem",
+        DEFAULT: "1rem",
+        sm: "1rem",
+        lg: "1rem",
       },
       
     },
@@ -18,7 +18,11 @@ module.exports = {
       },
       minWidth: {
         "40": "10rem"
-      }
+      }, 
+      width: {
+        "101": "25rem"
+      }, 
+     
     },
   },
   plugins: [],
