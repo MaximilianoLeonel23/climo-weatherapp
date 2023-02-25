@@ -20,11 +20,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `${API_CURR}/${locationKey}?apikey=${key}&language=es-ar&details=true`,
-        {
-          mode: "no-cors",
-          headers: { "Access-Control-Allow-Origin": "*" },
-        }
+        `${API_CURR}/${locationKey}?apikey=${key}&language=es-ar&details=true`
       )
       .then((resp) => {
         setWeather(resp.data[0]);
@@ -37,11 +33,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `${API_DAILY}/${locationKey}?apikey=${key}&language=es-ar&metric=true`,
-        {
-          mode: "no-cors",
-          headers: { "Access-Control-Allow-Origin": "*" },
-        }
+        `${API_DAILY}/${locationKey}?apikey=${key}&language=es-ar&metric=true`
       )
       .then((resp) => {
         setDaily(resp.data.DailyForecasts.slice(1));
